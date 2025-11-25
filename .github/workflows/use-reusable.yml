@@ -1,9 +1,5 @@
 name: Use Reusable Workflow
 
-run: |
-  pip install -r requirements.txt
-  pip install pytest-cov
-
 on:
   push:
     branches: [main]
