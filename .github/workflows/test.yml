@@ -3,6 +3,8 @@ name: Cross-Platform Testing
 on:
   push:
     branches: [main]
+
+jobs:
   deploy:
     name: Deploy to Production
     needs: [lint, test]
@@ -19,7 +21,6 @@ on:
         echo "Environment: Production"
         echo "Version: ${{ github.sha }}"
 
-jobs:
   test:
     needs: lint
     runs-on: ${{ matrix.os }}
