@@ -4,6 +4,22 @@ on:
   push:
     branches: [main]
 
+deploy:
+  name: Deploy to Production
+  needs: [lint, test]
+  runs-on: ubuntu-latest
+  if: |
+    github.ref == 'refs/heads/main' &&
+    github.event_name == 'push' &&
+    success()
+
+  steps:
+    - name: Simulate deployment
+      run: |
+        echo "Deploying to production..."
+        echo "Environment: Production"
+        echo "Version: ${{ github.sha }}"
+
 jobs:
   test:
     needs: lint
